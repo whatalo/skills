@@ -9,14 +9,16 @@ Skills here should stay small and point agents to the right public documentation
 - State which SDK versions the guidance applies to. Do not describe unreleased or unshipped behavior as guaranteed.
 - If public documentation is missing something the skill needs, describe the gap in the pull request instead of filling it with unverified guidance.
 
-## Skill layout
+## Repository layout
+
+The complete target structure — skills, rules, plugin manifests, MCP configuration, and workflows — and the status of each path are defined in [AGENTS.md](AGENTS.md#target-structure). Follow it instead of inventing new locations.
 
 Each skill lives in `skills/<skill-name>/`:
 
 - `SKILL.md` — required; the single source of truth for the skill.
-- `references/`, `assets/`, `scripts/` — optional supporting material.
+- `references/` — optional supporting material, as flat `<topic>.md` files or nested `<topic>/` directories.
 
-Keep `SKILL.md` concise and move long examples or background into supporting files.
+Keep `SKILL.md` concise and move long examples or background into references.
 
 ## Public content only
 
@@ -24,7 +26,7 @@ This repository is public. Never include secrets, credentials, account or tenant
 
 ## Integrations
 
-Plugin marketplace manifests, MCP configuration, and CI workflows are added only once there is a real, working integration to describe. Do not add empty or speculative manifests.
+Plugin and marketplace manifests, MCP configuration, the security workflow, `CODEOWNERS`, and brand assets are part of the target structure. Each is created only when its gate in [AGENTS.md](AGENTS.md#materialization-gates) is met. Do not add empty, disabled, or speculative versions to fill the tree.
 
 ## License
 
