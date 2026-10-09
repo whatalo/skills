@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Environment and secrets
+.env
+.env.*
+
+# Local agent and tooling state
+.atl/
+.codegraph/
+node_modules/
