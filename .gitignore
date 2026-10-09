@@ -12,6 +12,7 @@ Thumbs.db
 .env.*
 
 # Local agent and tooling state
+/odd/
 .atl/
 .codegraph/
 node_modules/
