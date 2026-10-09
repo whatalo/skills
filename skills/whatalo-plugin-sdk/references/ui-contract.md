@@ -1,6 +1,6 @@
 # UI contract: tokens, layout, mobile, theme, resize, accessibility
 
-Canonical source: the `react-vite` starter in `create-whatalo-plugin@1.6.0` (`src/components/whatalo-ui/`). The public UI pages describe the same library but several examples use props and token values that the shipped starter does not have (see "Source conflicts"). Prescribe only what the starter ships.
+Canonical source: the `react-vite` starter in `create-whatalo-plugin@1.7.0` (`src/components/whatalo-ui/`); its templates match 1.6.0 except `use-theme-sync.ts`. The public UI pages describe the same library but several examples use props and token values that the shipped starter does not have (see "Source conflicts"). Prescribe only what the starter ships.
 
 ## Policy
 
@@ -61,12 +61,12 @@ Sources: starter `styles.css`, `app.tsx`, `pages/settings.tsx`; [Design Guidelin
 ## Theme
 
 1. `src/main.tsx` imports `./theme-bootstrap` first; it reads `?whatalo_theme=light|dark` and sets `data-theme` and `colorScheme` before render.
-2. `useThemeSync()` reads `whatalo_theme` from the URL (the starter comments say this covers host modals, where the bridge may not be ready at render time) and otherwise `useWhataloContext().theme`, then sets `document.documentElement` `data-theme` and `style.colorScheme`.
+2. `useThemeSync()` (starter 1.7.0) gates on `isReady` from `useWhataloContext()`: before the bridge is ready it uses the `whatalo_theme` URL hint, falling back to the context theme; once `isReady` is true, the live context theme wins. It then sets `document.documentElement` `data-theme` and `style.colorScheme`.
 3. The SDK bridge also sets `data-theme` when a `whatalo:context` message arrives, and the admin re-sends context when its theme changes.
 
-Static inspection shows the URL theme hint takes precedence over bridge context in `useThemeSync()`, so live theme toggling is not guaranteed. Test toggling the admin theme at runtime; if the plugin does not follow, report the mismatch instead of inventing a fix.
+Scaffolds from `create-whatalo-plugin` 1.6.0 or earlier let the URL hint override the live context, so admin theme toggles may not apply. Per the 1.7.0 release migration guidance, update that hook manually: keep the URL hint only until `isReady`, then prefer the live context. Do not swap the precedence with a nullish fallback alone.
 
-Use tokens for every color so both themes work. Sources: starter files; SDK 1.5.0 bridge; [Theme Integration](https://developers.whatalo.com/docs/plugin-sdk/app-bridge/theme-integration).
+Use tokens for every color so both themes work. Sources: starter 1.6.0 and 1.7.0 files; SDK 1.5.0 bridge; [Release history](https://developers.whatalo.com/docs/plugin-sdk/release-history); [Theme Integration](https://developers.whatalo.com/docs/plugin-sdk/app-bridge/theme-integration).
 
 ## Scroll and resize
 
@@ -99,14 +99,14 @@ Keep these starter behaviors when composing pages:
 
 ## Source conflicts
 
-| Docs pages show | Starter 1.6.0 ships |
+| Docs pages show | Starter 1.7.0 ships |
 | --- | --- |
 | `Badge variant="success\|warning\|error"`, `Banner status="..."`, `status="error"` | `tone`, with `critical` instead of `error` |
 | `Text variant="heading"` / `"subdued"` | `variant="headingMd"` etc., `color="subdued"` |
 | `PageHeader description` | `subtitle` |
 | `Link href` | `url` |
 | `<Accordion title>` | `Accordion` wrapping `Accordion.Item title` |
-| Theme query parameter `?theme=` | `?whatalo_theme=` |
+| Theme query parameter `?theme=`; Theme Integration says `useThemeSync` reads it first, then falls back to bridge context | `?whatalo_theme=`, used only until the bridge `isReady`; then the live context wins |
 | Token values such as `--wui-bg: #ffffff`, `--wui-primary: #6366f1`, `--wui-radius: 8px`, dark selector `[data-theme="dark"]` | Different values (for example `--wui-bg: #f6f6f7`, `--wui-radius: 12px`) and selector `:root[data-theme="dark"]` |
 | "Seventeen components" | Index exports 16 components plus `Layout.Section`, `List.Item`, `Accordion.Item` |
 | `const { currentPage } = useAppBridge()` | `useAppBridge()` in SDK 1.5.0 does not return `currentPage`; use `useWhataloContext().currentPage` (as the starter does) |

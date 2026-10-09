@@ -8,7 +8,7 @@ Agent Skills that help coding agents build on the Whatalo platform.
 | --- | --- |
 | [`whatalo-plugin-sdk`](skills/whatalo-plugin-sdk/SKILL.md) | Building Whatalo admin plugins with `@whatalo/plugin-sdk` and the `whatalo` CLI: setup, manifest, UI contract, App Bridge, Data Bridge, session tokens, REST client, webhooks, billing, development preview, deploy, and review. |
 
-The skill routes agents to the official [Whatalo Plugin SDK documentation](https://developers.whatalo.com/docs/plugin-sdk) and constrains how they apply it; it does not replace the docs. It was verified on 2026-10-09 against the public documentation and `@whatalo/plugin-sdk` 1.5.0, `whatalo` 1.6.0, and `create-whatalo-plugin` 1.6.0. See [source-map.md](skills/whatalo-plugin-sdk/references/source-map.md) for the sources behind each reference.
+The skill routes agents to the official [Whatalo Plugin SDK documentation](https://developers.whatalo.com/docs/plugin-sdk) and constrains how they apply it; it does not replace the docs. It was verified on 2026-10-09 against the public documentation and `@whatalo/plugin-sdk` 1.5.0, the CLI family (`whatalo`, `@whatalo/cli`, `@whatalo/cli-kit`, `create-whatalo-plugin`) 1.7.0, with the full package inspection done on 1.6.0 and the 1.7.0 changes diffed. See [source-map.md](skills/whatalo-plugin-sdk/references/source-map.md) for the sources behind each reference.
 
 ## Installation
 

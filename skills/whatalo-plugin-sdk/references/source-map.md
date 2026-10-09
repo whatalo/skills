@@ -4,16 +4,17 @@ This skill summarizes the public sources below; it is not a complete copy of the
 
 ## Versions covered
 
-From the [release history](https://developers.whatalo.com/docs/plugin-sdk/release-history) entry "Stable developer toolchain with plugin review and theme authoring migrations" (2026-10-07, `latest`) and the npm registry:
+From the [release history](https://developers.whatalo.com/docs/plugin-sdk/release-history) entries "Store-isolated development previews and explicit cleanup" (2026-10-09, `latest`) and "Stable developer toolchain with plugin review and theme authoring migrations" (2026-10-07), and the npm registry:
 
 | Package | Inspected version | npm `latest` on 2026-10-09 |
 | --- | --- | --- |
 | `@whatalo/plugin-sdk` | 1.5.0 | 1.5.0 |
-| `whatalo` (CLI wrapper of `@whatalo/cli`) | 1.6.0 | 1.6.0 |
-| `create-whatalo-plugin` (starter templates) | 1.6.0 | 1.6.0 |
-| `@whatalo/protocol` (scopes, events, categories) | 1.4.0 | dependency of SDK 1.5.0 |
+| `whatalo` (CLI wrapper of `@whatalo/cli`) | 1.7.0 (full inspection on 1.6.0) | 1.7.0 |
+| `@whatalo/cli`, `@whatalo/cli-kit` | 1.7.0 (full inspection on 1.6.0) | 1.7.0 |
+| `create-whatalo-plugin` (starter templates) | 1.7.0 (full inspection on 1.6.0) | 1.7.0 |
+| `@whatalo/protocol` (scopes, events, categories) | 1.4.0 | dependency of SDK 1.5.0 and `@whatalo/cli` 1.7.0 |
 
-Only these versions were inspected, and the inspection does not cover [development-workflow.md](development-workflow.md). For any other installed version, re-check the docs and package declarations.
+The 1.7.0 release keeps SDK 1.5.0 and protocol 1.4.0. Diffing the published 1.6.0 and 1.7.0 tarballs showed that the starter templates differ only in `src/components/whatalo-ui/use-theme-sync.ts` and that `@whatalo/cli` adds the `dev clean` subcommand, adds `CLI_VERSION`/`cliVersion` reporting to `doctor`, and extracts shared dev API/store selectors; statements marked 1.6.0 elsewhere come from the full 1.6.0 inspection. For any other installed version, re-check the docs and package declarations.
 
 ## Discovery and fetch results
 
@@ -49,17 +50,20 @@ Read from the published npm tarballs (no installation):
 | [`@whatalo/plugin-sdk@1.5.0`](https://www.npmjs.com/package/@whatalo/plugin-sdk/v/1.5.0) | `package.json` exports, `README.md`, bridge/client/manifest/webhooks type declarations, `useAppBridge` implementation, `DATA_RESOURCE_SCOPE`, client retry code |
 | [`@whatalo/protocol@1.4.0`](https://www.npmjs.com/package/@whatalo/protocol/v/1.4.0) | scope tokens, webhook event names, marketplace categories |
 | [`whatalo@1.6.0`](https://www.npmjs.com/package/whatalo/v/1.6.0) and [`@whatalo/cli@1.6.0`](https://www.npmjs.com/package/@whatalo/cli/v/1.6.0) | command and option registrations |
+| [`create-whatalo-plugin@1.7.0`](https://www.npmjs.com/package/create-whatalo-plugin/v/1.7.0) | template diff against 1.6.0; `use-theme-sync.ts` |
+| [`whatalo@1.7.0`](https://www.npmjs.com/package/whatalo/v/1.7.0), [`@whatalo/cli@1.7.0`](https://www.npmjs.com/package/@whatalo/cli/v/1.7.0), [`@whatalo/cli-kit@1.7.0`](https://www.npmjs.com/package/@whatalo/cli-kit/v/1.7.0) | dependency pins; command registration diff against 1.6.0; `dev clean` options, statuses, and JSON receipt keys |
 
 ## Development workflow sources
 
-[development-workflow.md](development-workflow.md) was authored and checked against the maintainers' implementation of the development-preview workflow, together with the public pages below. It is not covered by the npm package inspection above and makes no claim that a published CLI release includes it; the required `whatalo dev clean --help` check guards against mismatches.
+[development-workflow.md](development-workflow.md) was authored against the maintainers' implementation of the development-preview workflow and re-checked against the released CLI family 1.7.0 and the public pages below. The published `@whatalo/cli@1.7.0` registers `dev clean` with `--store`/`-s`, `--reset`, `--portal-url`, and `--json`, uses the statuses `restored`, `removed`, and `noop`, and prints the JSON receipt keys `status`, `storePublicId`, `storeName`, `plugin`.
 
-| Intended official page | HTTP status on 2026-10-09 |
+| Official page | HTTP status on 2026-10-09 (after the 1.7.0 release) |
 | --- | --- |
-| [whatalo dev](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/dev) | 200; still shows the earlier cleanup-on-exit text |
-| [whatalo dev clean](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/dev-clean) | 404 |
-| [CLI Overview](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/overview) | 200; does not list `dev clean` |
+| [whatalo dev](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/dev) | 200; describes store isolation, preview retention on exit, and `dev clean` |
+| [whatalo dev clean](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/dev-clean) | 200 |
+| [CLI Overview](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/overview) | 200; lists `whatalo dev clean` |
 | [Review Process](https://developers.whatalo.com/docs/plugin-sdk/review-process) | 200 |
+| [Release history](https://developers.whatalo.com/docs/plugin-sdk/release-history) | 200; "Store-isolated development previews and explicit cleanup" entry |
 
 ## Example repository
 

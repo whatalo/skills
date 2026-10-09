@@ -113,7 +113,7 @@ Only files that exist with real content count as done. Current inventory:
 | --- | --- |
 | `AGENTS.md`, `README.md`, `CONTRIBUTING.md`, `.gitignore` | Materialized. |
 | `LICENSE` | Materialized. Apache License 2.0, selected by the maintainers. |
-| `skills/whatalo-plugin-sdk/SKILL.md`, `skills/whatalo-plugin-sdk/references/*.md` | Materialized. Summarizes public docs; inspected `@whatalo/plugin-sdk` 1.5.0, `whatalo` and `create-whatalo-plugin` 1.6.0 on 2026-10-09; `references/development-workflow.md` is verified against the maintainers' implementation and public docs, not the npm inspection. Published under Apache-2.0; installable with `npx skills add whatalo/skills --skill whatalo-plugin-sdk`. |
+| `skills/whatalo-plugin-sdk/SKILL.md`, `skills/whatalo-plugin-sdk/references/*.md` | Materialized. Summarizes public docs; inspected `@whatalo/plugin-sdk` 1.5.0 and the CLI family (`whatalo`, `@whatalo/cli`, `@whatalo/cli-kit`, `create-whatalo-plugin`) 1.7.0 on 2026-10-09 (full inspection on 1.6.0, 1.7.0 changes diffed); `references/development-workflow.md` is verified against the released 1.7.0 CLI and public docs. Published under Apache-2.0; installable with `npx skills add whatalo/skills --skill whatalo-plugin-sdk`. |
 | `.agents/plugins/`, `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.github/workflows/`, `rules/` | Directory reserved with `.gitkeep` only. No manifest, workflow, or rule exists yet. |
 | All plugin manifests, `.mcp.json`, `mcp.json` | Not created. Blocked on the gates below. |
 | `.github/workflows/semgrep.yml` | Not created. Blocked on maintainer approval. |

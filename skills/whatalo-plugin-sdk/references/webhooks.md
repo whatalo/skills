@@ -1,6 +1,6 @@
 # Webhooks, connection lifecycle, uninstall
 
-Inspected against `@whatalo/plugin-sdk` 1.5.0 and `whatalo` 1.6.0; summary only, read the linked pages for full contracts. Sources: [source-map.md](source-map.md).
+Inspected against `@whatalo/plugin-sdk` 1.5.0 and `whatalo` 1.7.0 (audited baseline and delta: see source map); summary only, read the linked pages for full contracts. Sources: [source-map.md](source-map.md).
 
 ## Subscribing
 

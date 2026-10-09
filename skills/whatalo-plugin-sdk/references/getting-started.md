@@ -1,6 +1,6 @@
 # Getting started, project structure, configuration, identity, scopes
 
-Inspected against `@whatalo/plugin-sdk` 1.5.0 and `whatalo`/`create-whatalo-plugin` 1.6.0; summary only, read the linked pages for full contracts. Sources: [source-map.md](source-map.md).
+Inspected against `@whatalo/plugin-sdk` 1.5.0 and `whatalo`/`create-whatalo-plugin` 1.7.0 (full inspection on 1.6.0; see [source-map.md](source-map.md#versions-covered)); summary only, read the linked pages for full contracts. Sources: [source-map.md](source-map.md).
 
 ## What a plugin is
 
@@ -62,7 +62,7 @@ my-plugin/
 ```
 
 `pnpm dev` runs Vite (port 5173) and the Express backend (port 8787) together; Vite proxies `/api` and `/webhooks/whatalo` so the tunnel exposes one origin. Scripts: `dev`, `build`, `preview`, `type-check`.
-Sources: `create-whatalo-plugin@1.6.0` template; [Quick Start](https://developers.whatalo.com/docs/plugin-sdk/quick-start#what-was-scaffolded); [Project Configuration](https://developers.whatalo.com/docs/plugin-sdk/configuration/project-config).
+Sources: `create-whatalo-plugin@1.6.0` and `@1.7.0` templates; [Quick Start](https://developers.whatalo.com/docs/plugin-sdk/quick-start#what-was-scaffolded); [Project Configuration](https://developers.whatalo.com/docs/plugin-sdk/configuration/project-config).
 
 ## Plugin identity
 
@@ -122,6 +122,6 @@ Sources: [Scopes & Permissions](https://developers.whatalo.com/docs/plugin-sdk/c
 - **Categories.** The manifest page lists `payment` and `payments`; `@whatalo/protocol@1.4.0` contains `payments` but not `payment`. Use `payments`.
 - **Data Bridge manifest example** uses `scopes: [...]` and `defineApp` from the package root; the manifest contract field is `permissions`, imported from `@whatalo/plugin-sdk/manifest` in the starter.
 - **Webhooks overview manifest example** uses `pluginId`; the manifest field is `id`.
-- **Build Your First Plugin** shows a generated manifest without `shortDescription`; the 1.6.0 starter template includes it and publication requires it.
+- **Build Your First Plugin** shows a generated manifest without `shortDescription`; the 1.6.0 and 1.7.0 starter templates include it and publication requires it.
 - **Version format.** The manifest requires `\d+\.\d+\.\d+`; Updates & Versioning lists `1.0.0-beta.1` as allowed. Follow the manifest contract.
 - **Counts.** The overview cites 15 scopes and 13 webhook events; Platform Overview and Event Reference cite 11 public events. This skill does not rely on these counts.

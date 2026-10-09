@@ -8,7 +8,7 @@ Summary only; read the linked pages for full contracts: [whatalo dev](https://de
 whatalo dev clean --help
 ```
 
-Follow the clean and preview-retention instructions below only if the installed CLI lists `dev clean` with the options described here. Otherwise follow the installed CLI's help and the `whatalo dev` page, and do not assume this behavior or infer a version.
+`whatalo dev clean` ships in the CLI family 1.7.0 (`whatalo`, `@whatalo/cli`, `@whatalo/cli-kit`, `create-whatalo-plugin`) and is absent from 1.6.0. Follow the clean and preview-retention instructions below only if the installed CLI lists `dev clean` with the options described here. Otherwise update the CLI family to 1.7.0 or follow the installed CLI's help, and do not assume this behavior. Store isolation also requires the updated Whatalo platform, per the release history.
 
 ## Scope of a dev preview
 
@@ -27,7 +27,7 @@ Used by `whatalo dev` and `whatalo dev clean`. Only development stores you own a
 3. The only available development store.
 4. Interactive prompt. Cancelling it does nothing.
 
-`--reset` ignores the cache for that run (it does not delete it); an explicit `--store` still wins.
+`--reset` ignores the previously cached selection for that run (it does not delete it up front); a successful selection then saves the new store to the cache. An explicit `--store` still wins.
 
 ## Stopping a preview
 

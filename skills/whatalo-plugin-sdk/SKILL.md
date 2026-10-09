@@ -5,7 +5,8 @@ license: Apache-2.0
 metadata:
   version: "0.1.0"
   inspected-plugin-sdk: "1.5.0"
-  inspected-create-whatalo-plugin: "1.6.0"
+  inspected-create-whatalo-plugin: "1.7.0"
+  inspected-whatalo-cli: "1.7.0"
   inspected-on: "2026-10-09"
 ---
 
@@ -22,7 +23,7 @@ Load for work on a Whatalo admin plugin: scaffolding, manifest/TOML, App Bridge,
 - Secrets and `WhataloClient` stay on the server.
 - Verify webhook HMAC over the raw body with the right per-installation secret; deduplicate on `delivery_id`.
 - No vendor credential inputs or login gate in the iframe; use `authUrl` + `bridge.openExternal()`.
-- Before any `whatalo dev clean` instruction, run `whatalo dev clean --help` and proceed only if it matches [development-workflow.md](references/development-workflow.md).
+- Before any `whatalo dev clean` instruction (CLI family 1.7.0+), run `whatalo dev clean --help` and proceed only if it matches [development-workflow.md](references/development-workflow.md).
 
 ### Mandatory UI contract (maintainer approval policy)
 

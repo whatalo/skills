@@ -1,12 +1,12 @@
 # Development, testing, troubleshooting, deploy, review
 
-Inspected against `whatalo` 1.6.0; summary only, read the linked pages for full contracts. Portal URL resolution differs between docs and the inspected CLI; see [getting-started.md](getting-started.md#first-run). Sources: [source-map.md](source-map.md).
+Inspected against `whatalo` 1.7.0 (full inspection on 1.6.0; 1.7.0 adds `dev clean`, see [development-workflow.md](development-workflow.md)); summary only, read the linked pages for full contracts. Portal URL resolution differs between docs and the inspected CLI; see [getting-started.md](getting-started.md#first-run). Sources: [source-map.md](source-map.md).
 
 ## CLI commands
 
 Full command and flag reference: [CLI Overview](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/overview). Most used: `login`, `init`, `dev`, `env pull`, `validate`, `deploy`, `logs`, `webhook trigger`, `doctor`.
 
-The installed 1.6.0 CLI also registers `whatalo changelog` (referenced from Updates & Versioning). Source: [CLI Overview](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/overview).
+The 1.6.0 and 1.7.0 CLIs also register `whatalo changelog` (referenced from Updates & Versioning). Source: [CLI Overview](https://developers.whatalo.com/docs/plugin-sdk/cli-reference/overview).
 
 ## Local development (`whatalo dev`)
 
