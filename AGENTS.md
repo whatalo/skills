@@ -112,12 +112,12 @@ Only files that exist with real content count as done. Current inventory:
 | Path | Status |
 | --- | --- |
 | `AGENTS.md`, `README.md`, `CONTRIBUTING.md`, `.gitignore` | Materialized. |
-| `.agents/plugins/`, `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.github/workflows/`, `rules/`, `skills/whatalo-plugin-sdk/references/` | Directory reserved with `.gitkeep` only. No manifest, workflow, rule, or reference exists yet. |
-| `skills/whatalo-plugin-sdk/SKILL.md` | Not created. Blocked on verified public SDK documentation. |
+| `LICENSE` | Materialized. Apache License 2.0, selected by the maintainers. |
+| `skills/whatalo-plugin-sdk/SKILL.md`, `skills/whatalo-plugin-sdk/references/*.md` | Materialized. Summarizes public docs; inspected `@whatalo/plugin-sdk` 1.5.0, `whatalo` and `create-whatalo-plugin` 1.6.0 on 2026-10-09; `references/development-workflow.md` is verified against the maintainers' implementation and public docs, not the npm inspection. Published under Apache-2.0; installable with `npx skills add whatalo/skills --skill whatalo-plugin-sdk`. |
+| `.agents/plugins/`, `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.github/workflows/`, `rules/` | Directory reserved with `.gitkeep` only. No manifest, workflow, or rule exists yet. |
 | All plugin manifests, `.mcp.json`, `mcp.json` | Not created. Blocked on the gates below. |
 | `.github/workflows/semgrep.yml` | Not created. Blocked on maintainer approval. |
 | `CODEOWNERS` | Not created. Blocked on maintainer handles. |
-| `LICENSE` | Not created. Blocked on maintainer license selection. |
 | `icon.png`, `logo.svg` | Not created. Blocked on official brand assets. |
 | `rules/<product>.mdc` | Not created. Blocked on verified public SDK documentation. |
 
@@ -128,11 +128,11 @@ Update this table in the same change that materializes or removes a file.
 Create a target file only when its gate is met. Never create placeholder, empty, or disabled versions of these files to fill the tree; use `.gitkeep` to reserve a directory instead.
 
 - **Skills, references, rules**: every statement verified against the current public Whatalo SDK documentation, with the targeted SDK version range stated. If the docs lack required information, report the gap instead of inventing guidance. Never create an installable skill without real content.
-- **Plugin manifests**: at least one real skill exists, the license is selected, and the brand assets exist. `version` is shared and bumped together across all manifests.
+- **Plugin manifests**: at least one real skill exists and the brand assets exist (the license, Apache-2.0, is selected). `version` is shared and bumped together across all manifests.
 - **MCP configuration**: a public, documented Whatalo MCP endpoint exists.
 - **Workflow**: approved by the maintainers; no secrets in the workflow file.
 - **`LICENSE`, `CODEOWNERS`, `icon.png`, `logo.svg`**: supplied or selected by the maintainers. Agents never choose a license, invent owners, or draw logos.
-- **Publication**: no skill or plugin is published before the license is selected.
+- **Publication**: skills are published under Apache-2.0. New skill front matter declares `license: Apache-2.0`.
 
 ## Validation
 
@@ -144,4 +144,6 @@ Create a target file only when its gate is met. Never create placeholder, empty,
 
 ## Registered skills
 
-None yet.
+| Skill | Trigger | Path |
+| --- | --- | --- |
+| `whatalo-plugin-sdk` | Whatalo plugin, `@whatalo/plugin-sdk`, `whatalo` CLI, App Bridge, `whatalo-ui`, plugin webhooks or billing | [skills/whatalo-plugin-sdk/SKILL.md](skills/whatalo-plugin-sdk/SKILL.md) |

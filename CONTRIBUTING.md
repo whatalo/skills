@@ -30,4 +30,4 @@ Plugin and marketplace manifests, MCP configuration, the security workflow, `COD
 
 ## License
 
-A license has not been selected yet. The maintainers will choose one before the first skill is published. Until then, please open an issue before contributing substantial content.
+This repository is licensed under the [Apache License 2.0](LICENSE). By contributing, you agree that your contributions are licensed under the same terms.

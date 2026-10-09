@@ -1,34 +1,47 @@
 # Whatalo Skills
 
-Agent Skills, editor rules, and plugin manifests that help coding agents build on the Whatalo platform.
+Agent Skills that help coding agents build on the Whatalo platform.
 
-## Status
+## Skills
 
-This repository is in its foundation stage. **There are no installable skills or plugin manifests yet.**
+| Skill | Covers |
+| --- | --- |
+| [`whatalo-plugin-sdk`](skills/whatalo-plugin-sdk/SKILL.md) | Building Whatalo admin plugins with `@whatalo/plugin-sdk` and the `whatalo` CLI: setup, manifest, UI contract, App Bridge, Data Bridge, session tokens, REST client, webhooks, billing, development preview, deploy, and review. |
 
-The first planned skill is `whatalo-plugin-sdk`, covering the public Whatalo plugin SDK. It will be published only after its guidance is verified against the current public SDK documentation and a license has been selected for this repository.
+The skill routes agents to the official [Whatalo Plugin SDK documentation](https://developers.whatalo.com/docs/plugin-sdk) and constrains how they apply it; it does not replace the docs. It was verified on 2026-10-09 against the public documentation and `@whatalo/plugin-sdk` 1.5.0, `whatalo` 1.6.0, and `create-whatalo-plugin` 1.6.0. See [source-map.md](skills/whatalo-plugin-sdk/references/source-map.md) for the sources behind each reference.
 
-## Planned installation
+## Installation
 
-> **Future command — not available yet.** It will not work until the first skill is published.
+Install the skill with the [`skills`](https://www.npmjs.com/package/skills) CLI:
 
 ```sh
-npx skills add https://github.com/whatalo/skills
+npx skills add whatalo/skills --skill whatalo-plugin-sdk
 ```
 
-Host-specific plugin installation will be documented once the corresponding manifests exist.
+List the skills available in this repository:
+
+```sh
+npx skills add whatalo/skills --list
+```
+
+Add `-g` to install for your user instead of the current project:
+
+```sh
+npx skills add whatalo/skills --skill whatalo-plugin-sdk -g
+```
+
+Update installed skills:
+
+```sh
+npx skills update
+```
 
 ## Layout
 
-The repository is designed as a single `whatalo` plugin distributed to several agent hosts:
+- `skills/<skill-name>/SKILL.md` — the skill entry point.
+- `skills/<skill-name>/references/` — topic references the skill links to.
 
-- `skills/<skill-name>/SKILL.md` with `references/` — skills and their supporting docs.
-- `rules/<product>.mdc` — editor rules.
-- `plugin.json`, `.claude-plugin/`, `.codex-plugin/`, `.cursor-plugin/`, `.agents/plugins/` — plugin and marketplace manifests per host.
-- `.mcp.json`, `mcp.json` — MCP server configuration.
-- `.github/workflows/` — security scanning.
-
-Most of these paths are reserved but not yet created. See [AGENTS.md](AGENTS.md) for the complete target tree, each file's role, and the current materialization status.
+See [AGENTS.md](AGENTS.md) for the full repository structure and authoring rules.
 
 ## Contributing
 
@@ -36,4 +49,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Agents working in this repository should
 
 ## License
 
-Not yet selected. See [CONTRIBUTING.md](CONTRIBUTING.md#license).
+[Apache License 2.0](LICENSE).
